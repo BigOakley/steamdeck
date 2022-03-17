@@ -1,3 +1,13 @@
+# Update
+After some research and usage of the `chroot` environment, it became apparent that the original intent was not possible. The 
+chroot environment creates bind mounts to several essential directories of the host filesystem and uses them. In my efforts to
+get podman working as a non-root user, I found that I was having to create new files and directories that end up existing on the
+host system. This goes against my original intention of leaving the host system untouched as I move towards new features and 
+capabilities of the Steam Deck.
+
+While I am disappointed that I didn't stumble on the answer quickly, I am pleased that I learned as much as I did. The efforts up 
+to this point will stay here. I will likely use this information in the future for other efforts somewhere.
+
 # WHY?
 The Steam Deck is a very capable computer, but it's also a handheld system. My original desire to own the Steam Deck actually comes
 from a bit of good timing and wanting to be on the front end of something good.

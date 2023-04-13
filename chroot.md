@@ -97,6 +97,22 @@ This will put the original signing keys back in place for pacman to use. This wi
 
 # Using the chroot
 
+After setting up the jail you can use `sudo arch-chroot /home/deck/jail` to load into the chroot.
+
+Note that this will be a base version of arch and any packages you had on the outside will not be available inside the chroot.
+
+You will likely want to set up a new user from within the chroot so that you aren't running everything as root.
+
+From within the chroot you can run `useradd -m -g users -G wheel deck` to create a new `deck` user with its own home directory and being able to use `sudo`.
+
+This will create the user's chrooted directory under `/home/deck/jail/home/deck`. In order to make day to day stuff easier, it might be worthwhile to sumlink some directories like "Downloads" from your home directory to your chrooted directory in order to make it easier to share files.
+
+You can set a password for the user using `passwd deck` from within the chroot.
+
+After that you can exit the chroot, and re-open it as the `deck` user with `sudo arch-chroot /home/deck/jail su deck`.
+This will open the chroot and immediately switch to the deck user and open its default shell.
+
+From here you can treat your new chroot environment as a sort of virtual machine which you can install things into without worrying about updates wiping your state.
 
 # Resources
 * [ARCH Install from Existing ARCH](https://wiki.archlinux.org/title/Install_Arch_Linux_from_existing_Linux#Using_a_chroot_environment)
